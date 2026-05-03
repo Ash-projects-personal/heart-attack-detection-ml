@@ -1,0 +1,16 @@
+{
+    "dataset_size": 5000,
+    "features_used": 13,
+    "engineered_features": [
+        "age_chol_risk",
+        "pressure_rate_ratio",
+        "high_risk_profile"
+    ],
+    "random_forest_accuracy": 0.829,
+    "neural_network_accuracy": 0.832,
+    "top_3_features": [
+        "cp",
+        "exang",
+        "oldpeak"
+    ]
+}
