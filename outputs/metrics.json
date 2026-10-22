@@ -1,0 +1,130 @@
+{
+  "dataset": {
+    "name": "UCI Heart Disease, processed Cleveland file (dataset 45)",
+    "source": "https://archive.ics.uci.edu/dataset/45/heart+disease",
+    "license": "CC BY 4.0",
+    "rows_raw": 303,
+    "rows_after_dropping_missing": 297,
+    "features_raw": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalach",
+      "exang",
+      "oldpeak",
+      "slope",
+      "ca",
+      "thal"
+    ],
+    "target": "num > 0 (angiographic heart disease present), binarised",
+    "positive_rate": 0.4612794612794613,
+    "note": "Real clinical data collected at the Cleveland Clinic, published by UCI. Small dataset: 303 rows before dropping missing values."
+  },
+  "split": "stratified 80/20, seed 42, fixed before fitting; plus 5 fold stratified cross validation for every model",
+  "engineered_features": {
+    "age_chol_risk": "age * chol / 1000",
+    "pressure_rate_ratio": "trestbps / thalach",
+    "high_risk_profile": "1 if cp == 4 and exang == 1 else 0"
+  },
+  "results": {
+    "random_forest_raw": {
+      "test_accuracy": 0.8666666666666667,
+      "test_roc_auc": 0.9425223214285714,
+      "test_f1": 0.8518518518518519,
+      "cv_accuracy_mean": 0.8146892655367232,
+      "cv_accuracy_std": 0.05575472612953946
+    },
+    "random_forest_engineered": {
+      "test_accuracy": 0.8666666666666667,
+      "test_roc_auc": 0.93359375,
+      "test_f1": 0.8518518518518519,
+      "cv_accuracy_mean": 0.8111864406779661,
+      "cv_accuracy_std": 0.0622991458042584
+    },
+    "logistic_regression_engineered": {
+      "test_accuracy": 0.8333333333333334,
+      "test_roc_auc": 0.9486607142857143,
+      "test_f1": 0.8148148148148148,
+      "cv_accuracy_mean": 0.8245197740112994,
+      "cv_accuracy_std": 0.056994813996509595
+    },
+    "mlp_engineered": {
+      "test_accuracy": 0.8333333333333334,
+      "test_roc_auc": 0.9296875,
+      "test_f1": 0.7916666666666666,
+      "cv_accuracy_mean": 0.7709039548022599,
+      "cv_accuracy_std": 0.0695406560051491
+    }
+  },
+  "feature_importance_engineered_model": [
+    {
+      "feature": "thal",
+      "importance": 0.12736224159797202
+    },
+    {
+      "feature": "ca",
+      "importance": 0.10794443846413235
+    },
+    {
+      "feature": "cp",
+      "importance": 0.1022698699733609
+    },
+    {
+      "feature": "oldpeak",
+      "importance": 0.08708130399136811
+    },
+    {
+      "feature": "pressure_rate_ratio",
+      "importance": 0.08378105503590613
+    },
+    {
+      "feature": "thalach",
+      "importance": 0.0806532954446831
+    },
+    {
+      "feature": "high_risk_profile",
+      "importance": 0.07025210624568097
+    },
+    {
+      "feature": "age",
+      "importance": 0.06757838978716285
+    },
+    {
+      "feature": "age_chol_risk",
+      "importance": 0.060429030362008224
+    },
+    {
+      "feature": "chol",
+      "importance": 0.05784989928379918
+    },
+    {
+      "feature": "trestbps",
+      "importance": 0.04958056381511617
+    },
+    {
+      "feature": "slope",
+      "importance": 0.034613813622539534
+    },
+    {
+      "feature": "sex",
+      "importance": 0.025664804354896455
+    },
+    {
+      "feature": "exang",
+      "importance": 0.02562115452683322
+    },
+    {
+      "feature": "restecg",
+      "importance": 0.013200494702813174
+    },
+    {
+      "feature": "fbs",
+      "importance": 0.006117538791727629
+    }
+  ],
+  "runtime_seconds": 6.7
+}

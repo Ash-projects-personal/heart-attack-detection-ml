@@ -1,14 +1,3 @@
+data/raw/
 __pycache__/
-*.pyc
-*.pyo
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
 .venv/
-.env
-.DS_Store
-.idea/
-.vscode/
-outputs/*.png
-*.csv
-models/*.pkl
